@@ -106,7 +106,7 @@ class LinkedList
     end
 
     # link_list.reverse
-    # Reverses current linked list (assuming SINGLY linked list as in Study Group)
+    # Reverses current linked list (assuming SINGLY linked list)
     def reverse_singly_linked
       cur_node = self.head
       next_node = prev_node = nil
@@ -123,7 +123,7 @@ class LinkedList
     end
 
     # link_list.reverse
-    # Reverses current linked list (assuming DOUBLY linked list as in Study Group)
+    # Reverses current linked list (assuming DOUBLY linked list)
     def reverse_doubly_linked
       cur_node = self.head
       next_node = prev_node = nil
