@@ -1,10 +1,10 @@
 class Node
     attr_accessor :value, :next, :prev
-    
+
     #Node.new(value), creates a new Node object
     #Returns new Node obj, with a value
     def initialize(value = "")
-        @value = value    
+        @value = value
     end
 
     #node.to_str(), returns string representation of node
@@ -32,7 +32,7 @@ class LinkedList
         end
     end
 
-    #link_list.insertTail(newNode) 
+    #link_list.insertTail(newNode)
     #Returns new LinkedList obj whose tail node is newNode
     def insertTail(newNode)
         currentNode = self.head
@@ -43,7 +43,7 @@ class LinkedList
 
         currentNode.next = newNode
         newNode.prev = currentNode
-    end  
+    end
 
     #link_list.insertAfter(node, newNode)
     #Returns new LinkedList obj with newNode inserted after node if found
@@ -64,7 +64,7 @@ class LinkedList
             return self
         else
             return false
-        end     
+        end
     end
 
     #link_list.delete(node)
@@ -72,7 +72,7 @@ class LinkedList
     def delete(node)
         if node.prev != nil
             node.prev.next = node.next
-        else 
+        else
             self.head = node.next
         end
 
@@ -83,11 +83,11 @@ class LinkedList
         return self
     end
 
-    #link_list.search(value) 
+    #link_list.search(value)
     #Returns Node obj whose value = value if found
     def search(value)
         currentNode = self.head
-        
+
         while currentNode != nil && currentNode.value != value
             currentNode = currentNode.next
         end
@@ -101,8 +101,43 @@ class LinkedList
         currentNode = self.head
         while currentNode != nil
             yield currentNode
-            currentNode = currentNode.next 
+            currentNode = currentNode.next
         end
+    end
+
+    # link_list.reverse
+    # Reverses current linked list (assuming SINGLY linked list as in Study Group)
+    def reverse_singly_linked
+      cur_node = self.head
+      next_node = prev_node = nil
+
+      # Just change #next to point to previous node for each node.
+      while cur_node do
+        next_node = cur_node.next
+        cur_node.next = prev_node
+        prev_node = cur_node
+        cur_node = next_node
+      end
+
+      self.head = prev_node
+    end
+
+    # link_list.reverse
+    # Reverses current linked list (assuming DOUBLY linked list as in Study Group)
+    def reverse_doubly_linked
+      cur_node = self.head
+      next_node = prev_node = nil
+
+      # Just change #next to point to previous node for each node.
+      while cur_node do
+        next_node = cur_node.next
+        cur_node.next = prev_node
+        cur_node.prev = next_node
+        prev_node = cur_node
+        cur_node = next_node
+      end
+
+      self.head = prev_node
     end
 
     #link_list.to_str()
@@ -112,4 +147,4 @@ class LinkedList
             puts node.to_str()
         end
     end
-end    
+end
